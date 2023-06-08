@@ -1,5 +1,5 @@
-import EcomFooter from '@/components/Example/e-commerce/layouts/Footer'
-import EcomHeader from '@/components/Example/e-commerce/layouts/Header'
+import EcomFooter from '@/components/e-commerce/layouts/Footer'
+import EcomHeader from '@/components/e-commerce/layouts/Header'
 
 export const metadata = {
     title: 'E-commerce Site',
