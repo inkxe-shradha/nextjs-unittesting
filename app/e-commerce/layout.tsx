@@ -9,7 +9,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
         <>
             <EcomHeader />
-            {children}
+            <main className="max-w-sm m-auto min-h-screen md:max-w-screen-xl p-4">
+                {children}
+            </main>
             <EcomFooter />
         </>
     )

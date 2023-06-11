@@ -40,10 +40,10 @@ describe('React Query Testing', () => {
 
         it('Should have contain the parent wrapper test', () => {
             render(<Query />)
-            const bodyText = screen.getAllByText('Parent content')
+            const bodyText = screen.getByText('Parent content')
             console.log(process.env.NEXT_PUBLIC_SPACE_ID)
 
-            expect(bodyText).toHaveLength(2)
+            expect(bodyText).toBeInTheDocument()
         })
     })
 

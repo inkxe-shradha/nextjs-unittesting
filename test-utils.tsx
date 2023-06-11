@@ -1,11 +1,33 @@
-import React, { ReactElement } from 'react';
-import { render, RenderOptions } from '@testing-library/react';
-import ParentWrapper from './components/Example/ParentWrapper';
+/* eslint-disable react/display-name */
+import React, { ReactElement } from 'react'
+import { render, RenderOptions, RenderResult } from '@testing-library/react'
+import { ThemeProvider } from 'next-themes'
+
+interface TestProviderOptions {
+    theme?: string
+}
+interface CustomOptions extends RenderOptions, TestProviderOptions {}
+const createTestProviders =
+    ({ theme = 'dark' }: TestProviderOptions): React.FC =>
+    ({ children }: any) =>
+        (
+            <ThemeProvider
+                defaultTheme={theme}
+                enableSystem={false}
+                attribute="class"
+            >
+                {children}
+            </ThemeProvider>
+        )
 
 const customRender = (
-  ui: ReactElement,
-  options?: Omit<RenderOptions, 'wrapper'>
-) => render(ui, { wrapper: ParentWrapper, ...options });
+    ui: ReactElement,
+    { theme, ...options }: CustomOptions = {}
+): RenderResult =>
+    render(ui, { wrapper: createTestProviders({ theme }), ...options })
 
-export * from '@testing-library/react';
-export { customRender as render };
+// re-export everything
+export * from '@testing-library/react'
+
+// override render method
+export { customRender as render }

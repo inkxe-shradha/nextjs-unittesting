@@ -29,4 +29,27 @@ export const handlers = [
             )
         }
     ),
+
+    rest.get(
+        process.env.NEXT_PUBLIC_SERVER?.concat('/products') || '',
+        (req, res, ctx) => {
+            return res(
+                ctx.status(200),
+                ctx.json([
+                    {
+                        id: 1,
+                        name: 'p 1',
+                        price: 100,
+                        link: '/products/p-1',
+                    },
+                    {
+                        id: 2,
+                        name: 'p 2',
+                        price: 2000,
+                        link: '/products/p-2',
+                    },
+                ])
+            )
+        }
+    ),
 ]
